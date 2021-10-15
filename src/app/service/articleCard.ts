@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 16:04:55
- * @LastEditTime: 2021-10-14 17:36:04
+ * @LastEditTime: 2021-10-15 16:34:04
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_backEnd\src\app\service\articleCard.ts
@@ -12,13 +12,14 @@ import { InjectEntityModel } from "@midwayjs/orm";
 import { ArticleCard } from "../model/articleCard";
 import { Repository } from "typeorm";
 
+import { QueryDTO } from "../dto/articleCard";
 @Provide()
-export class CardService {
+export class ArticleCardService {
   @InjectEntityModel(ArticleCard)
   articleCardModel: Repository<ArticleCard>;
 
   // save
-  async saveArticleCard() {
+  async saveArticleCard(params: QueryDTO) {
     // create a entity object
     let articleCard = new ArticleCard();
     articleCard.id = 1;
