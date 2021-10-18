@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-14 17:50:05
- * @LastEditTime: 2021-10-15 16:44:31
+ * @LastEditTime: 2021-10-18 10:50:47
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_backEnd\src\app\controller\articleCard.ts
@@ -13,7 +13,7 @@ import {
   Controller,
   Inject,
   Get,
-  Validate,
+  // Validate,
   ALL,
   Query,
 } from "@midwayjs/decorator";
@@ -29,12 +29,12 @@ export class ArticleCardController {
   @Inject()
   userService: ArticleCardService;
 
-  @Get("/query")
+  @Get("/")
   // @Validate()
   async query(ctx: Context, @Query(ALL) query: QueryDTO) {
-    // const result = await this.userService.saveArticleCard(query);
-    // ctx.helper.success(result);
-    // return ctx
-    return 'Hello Midwayjs!';
+    const result = await this.userService.saveArticleCard(query);
+    ctx.helper.success(result);
+    return ctx
+    // return 'Hello Midwayjs!';
   }
 }

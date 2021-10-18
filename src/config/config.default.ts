@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:48:29
- * @LastEditTime: 2021-09-26 15:58:42
+ * @LastEditTime: 2021-10-18 11:03:55
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_backEnd\src\config\config.default.ts
@@ -9,6 +9,16 @@
  */
 import { EggAppConfig, EggAppInfo, PowerPartial } from "egg";
 
+const orm = {
+  type: "mysql",
+  host: "127.0.0.1",
+  port: 3306,
+  username: "root",
+  password: "0guduzhilv0",
+  database: 'myblog',
+  synchronize: false, // 如果第一次使用，不存在表，有同步的需求可以写 true
+  logging: true,
+};
 export type DefaultConfig = PowerPartial<EggAppConfig>;
 
 export default (appInfo: EggAppInfo) => {
@@ -18,6 +28,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + "_1632628109610_3589";
 
   // add your config here
+  config.orm = orm;
   config.middleware = [];
 
   config.midwayFeature = {
@@ -33,16 +44,6 @@ export default (appInfo: EggAppInfo) => {
   /**
    * 单数据库实例
    */
-  const orm = {
-    type: "mysql",
-    host: "127.0.0.1",
-    port: 3306,
-    username: "root",
-    password: "0guduzhilv0",
-    database: undefined,
-    synchronize: false, // 如果第一次使用，不存在表，有同步的需求可以写 true
-    logging: true,
-  };
 
   return config;
 };
