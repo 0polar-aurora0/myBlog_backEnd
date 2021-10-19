@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 16:04:55
- * @LastEditTime: 2021-10-15 16:34:04
+ * @LastEditTime: 2021-10-19 16:20:33
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_backEnd\src\app\service\articleCard.ts
@@ -12,13 +12,20 @@ import { InjectEntityModel } from "@midwayjs/orm";
 import { ArticleCard } from "../model/articleCard";
 import { Repository } from "typeorm";
 
-import { QueryDTO } from "../dto/articleCard";
+import { QueryDTO, ShowDTO } from "../dto/articleCard";
 @Provide()
 export class ArticleCardService {
   @InjectEntityModel(ArticleCard)
   articleCardModel: Repository<ArticleCard>;
 
-  // save
+  /**
+   * @method: saveArticleCard
+   * @description: 文章卡片数据存储
+   * @param {QueryDTO} params
+   * @return {*}
+   * @example:
+   */
+
   async saveArticleCard(params: QueryDTO) {
     // create a entity object
     let articleCard = new ArticleCard();
@@ -33,5 +40,12 @@ export class ArticleCardService {
 
     // save success
     console.log("articleCard id = ", articleCardResult.id);
+  }
+
+  async queryArticleCard(params: ShowDTO) {
+    // find All
+    let allArticleCards = await this.articleCardModel.find();
+    console.log("All photos from the db: ", allArticleCards);
+    return allArticleCards
   }
 }
