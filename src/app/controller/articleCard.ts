@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-14 17:50:05
- * @LastEditTime: 2021-10-19 17:34:44
+ * @LastEditTime: 2021-10-20 09:21:19
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_backEnd\src\app\controller\articleCard.ts
@@ -43,10 +43,6 @@ export class ArticleCardController {
   async query(ctx: Context, @Body(ALL) query: ShowDTO) {
     const result = await this.userService.queryArticleCard(query);
     console.log({ result });
-    let ctx_data = ctx.helper.success(result);
-    // console.log({ controller_ctx: ctx });
-    console.log({ ctx_data });
-
-    return ctx_data;
+    ctx.helper.success(result);
   }
 }
