@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 13:59:10
- * @LastEditTime: 2021-10-14 17:31:37
+ * @LastEditTime: 2021-10-21 14:05:35
  * @LastEditors: fuzhenghao
  * @Description: 首页进入时卡片数据
  * @FilePath: \myBlog_backEnd\src\app\model\articleCard.ts
@@ -14,7 +14,7 @@ import { Column, PrimaryGeneratedColumn } from "typeorm";
 export class ArticleCard {
   @PrimaryGeneratedColumn()
   id: number;
-  
+
   @Column()
   title: string;
 
@@ -24,5 +24,6 @@ export class ArticleCard {
   @Column()
   introduce: string;
 
-
+  @Column()
+  visits: number;
 }
