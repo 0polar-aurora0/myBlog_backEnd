@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 16:04:55
- * @LastEditTime: 2021-10-19 16:20:33
+ * @LastEditTime: 2021-11-02 15:44:10
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_backEnd\src\app\service\articleCard.ts
@@ -33,7 +33,7 @@ export class ArticleCardService {
     articleCard.date = "1999-09-12";
     articleCard.title = "js基础详解";
     articleCard.introduce =
-      "js基础详解微软亚太文任由他为人我一会条我也会突然也很感人";
+      "js基础详";
 
     // save entity
     const articleCardResult = await this.articleCardModel.save(articleCard);
