@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-19 10:23:16
- * @LastEditTime: 2021-10-20 09:28:40
+ * @LastEditTime: 2022-05-23 20:44:47
  * @LastEditors: fuzhenghao
  * @Description: 指向ctx.helper对象 this.ctx.helper调用
  * @FilePath: \myBlog_backEnd\src\app\extend\helper.ts
@@ -19,13 +19,30 @@ export default {
    * @return {*}
    * @example: ctx.helper.success({}, null, 201);
    */
-  success(this: any, result = null, message = "请求成功", status = 200) {
-    console.log("调用成功");
-    console.log({ result });
-
+  success(this: any, result = null, message = '请求成功', status = 200) {
+  
     this.ctx.body = {
       code: status,
       message,
+      ...result,
+    };
+    this.ctx.status = status;
+  },
+
+  /**
+   * @method: Helper.success
+   * @description:  处理成功响应
+   * @param {any} this
+   * @param {any} result Return data, Default null
+   * @param {String} message Error message, Default '请求成功'
+   * @param {Number} status Status code, Default '200'
+   * @return {*}
+   * @example: ctx.helper.success({}, null, 201);
+   */
+  querySuccess(this: any, result = null, message = '请求成功', status = 200) {
+    
+    this.ctx.body = {
+      code: status,
       data: result,
     };
     this.ctx.status = status;
